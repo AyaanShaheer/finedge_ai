@@ -1,0 +1,56 @@
+# .github/workflows/ci.yml
+name: FinEdge AI CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-test-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with ruff
+        run: ruff check amifi_ai/
+
+      - name: Run guardrail + parser tests (no model needed)
+        run: |
+          pytest amifi_ai/tests/test_guardrails.py \
+                 amifi_ai/tests/test_parsers.py \
+                 -v --tb=short
+
+      - name: Validate prompt schemas
+        run: |
+          python -c "
+          from amifi_ai.prompts import load_prompt, build_prompt
+          for v in ['v1', 'v2']:
+              p = load_prompt(v)
+              prompt, _ = build_prompt('Test transaction Rs 500', version=v)
+              assert '{input_text}' not in prompt
+              print(f'✅ Prompt {v} valid')
+          "
+
+      - name: Build artifact
+        run: |
+          chmod +x amifi_ai/scripts/build.sh
+          bash amifi_ai/scripts/build.sh
+
+      - name: Verify checksum exists
+        run: |
+          ls -lh artifacts/
+          cat artifacts/*.sha256

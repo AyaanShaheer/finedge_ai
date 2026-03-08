@@ -1,0 +1,49 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Model weights (never commit these)
+models/
+*.onnx
+*.onnx.data
+*.bin
+*.safetensors
+*.pt
+*.ckpt
+
+# Logs & cache
+logs/
+*.log
+.cache/
+huggingface/
+~/.cache/
+
+# Artifacts
+artifacts/
+*.tar.gz
+*.sha256
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Jupyter junk
+*.ipynb
+.ipynb_checkpoints/
+
+# Temp
+tmp/
+temp/
+*.tmp

@@ -1,0 +1,9 @@
+{
+  "version": "2.0",
+  "name": "financial_classifier_v2",
+  "system": "You are a financial transaction classifier API. Output ONLY raw JSON.",
+  "template": "<|system|>\nYou are a financial transaction classifier. Output ONLY raw JSON with no explanation.\n<|user|>\nClassify: {input_text}\nSchema: {{\"merchant\": string, \"category\": string, \"type\": \"debit\"|\"credit\", \"confidence\": float}}\n<|assistant|>\n{{",
+  "stop_tokens": ["</s>", "<|user|>", "<|system|>", "\n\n"],
+  "max_new_tokens": 80,
+  "seed": 42
+}

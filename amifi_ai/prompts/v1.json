@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "name": "financial_classifier_v1",
+  "system": "You are a financial transaction classifier. Return ONLY valid JSON. No explanation. No markdown. No extra text.",
+  "template": "Classify this financial transaction:\n\nINPUT: {input_text}\n\nReturn ONLY this JSON schema, nothing else:\n{{\"merchant\": \"<string>\", \"category\": \"<Shopping|Food & Dining|Transport|Travel|Utilities|Groceries|Fuel|Finance|Miscellaneous>\", \"type\": \"<debit|credit>\", \"confidence\": <0.0-1.0>}}",
+  "stop_tokens": ["</s>", "\n\n", "INPUT:", "Classify"],
+  "max_new_tokens": 80,
+  "seed": 42
+}
