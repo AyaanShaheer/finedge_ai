@@ -32,6 +32,8 @@ huggingface/
 artifacts/
 *.tar.gz
 *.sha256
+*.ruff_cache/
+
 
 # Environment
 .env
