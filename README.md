@@ -53,7 +53,9 @@ The LLM path runs a **4-stage guardrail pipeline**, ensuring the system **never 
 
 ---
 
-# 🗂 Project Structure
+# 🗂 Project Structure & System Architecture
+
+<img width="2816" height="1536" alt="Gemini_Generated_Image_qawyuxqawyuxqawy" src="https://github.com/user-attachments/assets/e698635d-8344-4481-bcf3-f84e9f6577be" />
 
 ```
 
@@ -399,5 +401,6 @@ MIT © 2026 Ayaan Shaheer
 * Built for Indian financial data
 
 ---
+
 
 If this project helped you, consider ⭐ starring the repo.
